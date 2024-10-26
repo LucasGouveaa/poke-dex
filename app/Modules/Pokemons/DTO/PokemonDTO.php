@@ -32,7 +32,7 @@ readonly class PokemonDTO
 
         return new self(
             $data['id'],
-            $data['name'],
+            StringUtil::ucFirstPhrase($data['name']),
             json_encode($abilities),
             $data['sprites']['front_default'] ?? null,
             ['sprites']['back_default'] ?? null,

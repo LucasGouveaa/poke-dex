@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pokemon extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $table = 'pokemons';
 
     /**
      * The attributes that are mass assignable.
@@ -33,7 +36,7 @@ class Pokemon extends Model
         'deleted_at',
     ];
 
-    public function types(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function types(): BelongsToMany
     {
         return $this->belongsToMany(Type::class, 'pokemon_types', 'pokemon_id', 'type_id');
     }
