@@ -35,7 +35,7 @@ readonly class PokemonDTO
             StringUtil::ucFirstPhrase($data['name']),
             json_encode($abilities),
             $data['sprites']['front_default'] ?? null,
-            ['sprites']['back_default'] ?? null,
+            $data['sprites']['back_default'] ?? null,
             $data['sprites']['front_female'] ?? null,
             $data['sprites']['back_female'] ?? null,
             $data['sprites']['front_shiny'] ?? null,

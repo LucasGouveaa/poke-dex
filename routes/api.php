@@ -4,7 +4,7 @@ use App\Http\Controllers\PokedexController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json(['status' => 'ok']);
 });
 
 Route::prefix('v1')->group(function () {

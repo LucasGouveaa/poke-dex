@@ -69,6 +69,8 @@ readonly class PokedexClient implements Infra\PokedexClientInterface
                         $type->name = StringUtil::ucFirstPhrase($responseType['name']);
                         $type->img_url = $responseType['sprites']['generation-viii']['sword-shield']['name_icon'] ?? null;
                         $type->save();
+
+                        $type->pokemons()->syncWithoutDetaching([$pokemon->id]);
                     }
 
                     DB::commit();
