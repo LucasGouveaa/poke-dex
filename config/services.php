@@ -35,4 +35,7 @@ return [
         ],
     ],
 
+    'pokedex' => [
+        'base_url' => env('POKE_API_URL'),
+    ],
 ];

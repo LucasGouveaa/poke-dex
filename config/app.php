@@ -1,5 +1,8 @@
 <?php
 
+use App\Providers\PokedexProvider;
+use Illuminate\Support\ServiceProvider;
+
 return [
 
     /*
@@ -39,7 +42,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -104,6 +107,10 @@ return [
             explode(',', env('APP_PREVIOUS_KEYS', ''))
         ),
     ],
+
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        PokedexProvider::class
+    ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------

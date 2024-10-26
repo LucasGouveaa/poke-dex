@@ -15,7 +15,7 @@ class PokedexProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(PokedexClientInterface::class, function ($app) {
-            $http = Http::baseUrl(Config('services.pokedex.url'))
+            $http = Http::baseUrl(Config('services.pokedex.base_url'))
                 ->withHeaders(['Content-Type' => 'application/json']);
 
             return new PokedexClient($http);
