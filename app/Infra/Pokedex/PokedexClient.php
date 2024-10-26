@@ -15,6 +15,6 @@ readonly class PokedexClient implements Infra\PokedexClientInterface
 
     public function createOrUpdatePokemons(): void
     {
-        
+
     }
 }
