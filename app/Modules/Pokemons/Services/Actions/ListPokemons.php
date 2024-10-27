@@ -22,8 +22,6 @@ readonly class ListPokemons
 
     public function execute(): ListPokemonsDTO
     {
-        Log::info("Type $this->type");
-
         $pokemons = Pokemon::query()
             ->when($this->name, fn($query) => $query->where('name', 'like', '%' . $this->name . '%'))
             ->when($this->habitat, fn($query) => $query->where('habitat', $this->habitat));
