@@ -10,6 +10,5 @@ Route::get('/', function () {
 Route::prefix('v1')->group(function () {
     Route::prefix('pokemons')->group(function () {
         Route::get('/', [PokedexController::class, 'index']);
-        Route::get('sync', [PokedexController::class, 'sync']);
     });
 });

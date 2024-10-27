@@ -3,8 +3,6 @@
 namespace App\Modules\Pokemons\DTO;
 
 use App\Models\Pokemon;
-use App\Support\StringUtil;
-use Illuminate\Support\Arr;
 
 readonly class PokemonDetailDTO
 {

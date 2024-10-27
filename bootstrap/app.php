@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
+use Illuminate\Http\Middleware\HandleCors;
 
 $app = Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -14,7 +15,8 @@ $app = Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->use([
-            ConvertEmptyStringsToNull::class
+            ConvertEmptyStringsToNull::class,
+            HandleCors::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
