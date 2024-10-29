@@ -11,4 +11,12 @@ Route::prefix('v1')->group(function () {
     Route::prefix('pokemons')->group(function () {
         Route::get('/', [PokedexController::class, 'index']);
     });
+
+    Route::prefix('habitats')->group(function () {
+        Route::get('/', [PokedexController::class, 'getHabitats']);
+    });
+
+    Route::prefix('types')->group(function () {
+        Route::get('/', [PokedexController::class, 'getTypes']);
+    });
 });
