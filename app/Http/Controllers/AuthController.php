@@ -15,22 +15,11 @@ class AuthController extends Controller
 {
     public function login(Request $request): JsonResponse
     {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-
         return response()->json(LoginUser::fromRequest($request)->execute());
     }
 
     public function register(Request $request): JsonResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
-        ]);
-
         return response()->json(RegisterUser::fromRequest($request)->execute());
     }
 
@@ -46,11 +35,6 @@ class AuthController extends Controller
 
     public function changePassword(Request $request): JsonResponse
     {
-        $request->validate([
-            'current_password' => 'required|string',
-            'new_password' => 'required|string|min:6|confirmed',
-        ]);
-
         return response()->json(ChangePassword::fromRequest($request)->execute());
     }
 

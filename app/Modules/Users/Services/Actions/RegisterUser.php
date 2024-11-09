@@ -19,6 +19,15 @@ readonly class RegisterUser
 
     public function execute(): array
     {
+        $exist = User::query()->where('email', $this->email)->first();
+        if ($exist) {
+            return [
+                'success' => false,
+                'message' => 'E-mail já cadastrado!',
+                'token' => null
+            ];
+        }
+
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,

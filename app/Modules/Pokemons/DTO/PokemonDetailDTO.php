@@ -20,6 +20,7 @@ readonly class PokemonDetailDTO
         public ?string $front_shiny_female,
         public ?string $back_shiny_female,
         public array   $types,
+        public ?string $trainer_name,
     )
     {
     }
@@ -39,7 +40,8 @@ readonly class PokemonDetailDTO
             $pokemon->back_shiny,
             $pokemon->front_shiny_female,
             $pokemon->back_shiny_female,
-            $pokemon->types()->get()->select(['id', 'name', 'img_url'])->toArray()
+            $pokemon->types()->get()->select(['id', 'name', 'img_url'])->toArray(),
+            $pokemon->trainer?->name,
         );
     }
 }

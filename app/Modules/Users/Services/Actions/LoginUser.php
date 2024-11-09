@@ -23,7 +23,7 @@ readonly class LoginUser
 
         if (!$token = JWTAuth::attempt($credentials)) {
             return [
-                'status' => 'error',
+                'success' => false,
                 'message' => 'Credenciais inválidas!',
             ];
         }

@@ -21,7 +21,7 @@ readonly class ChangePassword
 
         if (!Hash::check($this->current_password, $this->password)) {
             return [
-                'status' => 'error',
+                'success' => false,
                 'message' => 'A senha atual está incorreta.',
             ];
         }
