@@ -30,7 +30,6 @@ readonly class RegisterUser
         return [
             'success' => true,
             'message' => 'Usuário cadastrado com sucesso!',
-            'user' => $user,
             'token' => $token
         ];
     }

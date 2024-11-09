@@ -8,10 +8,9 @@ use PHPOpenSourceSaver\JWTAuth\JWTAuth;
 readonly class UserDTO
 {
     public function __construct(
-        public string $id,
+        public int $id,
         public string $name,
         public string $email,
-        public ?string $token
     )
     {
     }
@@ -21,8 +20,7 @@ readonly class UserDTO
         return new self(
             $user->id,
             $user->name,
-            $user->email,
-            JWTAuth::fromUser($user)
+            $user->email
         );
     }
 }

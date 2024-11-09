@@ -16,7 +16,10 @@ readonly class LoginUser
 
     public function execute(): array
     {
-        $credentials = [$this->email, $this->password];
+        $credentials = [
+            'email' => $this->email,
+            'password' => $this->password
+        ];
 
         if (!$token = JWTAuth::attempt($credentials)) {
             return [
@@ -25,10 +28,8 @@ readonly class LoginUser
             ];
         }
 
-        $user = auth()->user();
         return [
             'success' => true,
-            'user' => $user,
             'token' => $token
         ];
     }
