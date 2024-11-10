@@ -28,10 +28,17 @@ readonly class RegisterUser
             ];
         }
 
+        if (strlen(trim($this->password)) < 6) {
+            return [
+                'success' => false,
+                'message' => 'A senha deve conter no mínimo 6 caracteres.'
+            ];
+        }
+
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
-            'password' => Hash::make($this->password),
+            'password' => Hash::make(trim($this->password)),
         ]);
 
         $token = JWTAuth::fromUser($user);
