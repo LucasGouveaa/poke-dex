@@ -12,6 +12,8 @@ Route::get('/', function () {
 Route::prefix('v1')->group(function () {
     Route::prefix('pokemons')->middleware('auth:api')->group(function () {
         Route::get('/', [PokedexController::class, 'index']);
+        Route::post('capture', [PokedexController::class, 'capture'])->middleware(Jwt::class);
+        Route::post('release', [PokedexController::class, 'release'])->middleware(Jwt::class);
     });
 
     Route::prefix('habitats')->middleware('auth:api')->group(function () {

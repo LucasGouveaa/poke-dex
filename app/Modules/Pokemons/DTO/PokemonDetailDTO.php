@@ -3,6 +3,7 @@
 namespace App\Modules\Pokemons\DTO;
 
 use App\Models\Pokemon;
+use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 readonly class PokemonDetailDTO
 {
@@ -21,12 +22,15 @@ readonly class PokemonDetailDTO
         public ?string $back_shiny_female,
         public array   $types,
         public ?string $trainer_name,
+        public bool    $is_trainer,
     )
     {
     }
 
     public static function fromPokemon(Pokemon $pokemon): self
     {
+        $user = JWTAuth::parseToken()->authenticate();
+
         return new self(
             $pokemon->id,
             $pokemon->name,
@@ -42,6 +46,7 @@ readonly class PokemonDetailDTO
             $pokemon->back_shiny_female,
             $pokemon->types()->get()->select(['id', 'name', 'img_url'])->toArray(),
             $pokemon->trainer?->name,
+            $pokemon->user_id === $user->id
         );
     }
 }
